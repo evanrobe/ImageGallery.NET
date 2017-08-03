@@ -1,5 +1,5 @@
-﻿using ImageUpdater.Foundation.Engines;
-using ImageUpdater.Foundation.Messages;
+﻿using ImageUploader.Foundation.Engines;
+using ImageUploader.Foundation.Messages;
 using ImageUploader.Business.Models;
 using Ninject;
 using System;

@@ -57,7 +57,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImageUpdater.Foundation\ImageUpdater.Foundation.csproj">
+    <ProjectReference Include="..\ImageUploader.Foundation\ImageUploader.Foundation.csproj">
       <Project>{705C4E77-2550-4EF7-92F0-61F8FD0F1136}</Project>
       <Name>ImageUpdater.Foundation</Name>
     </ProjectReference>

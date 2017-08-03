@@ -1,12 +1,12 @@
-﻿using ImageUpdater.Foundation.Engines;
+﻿using ImageUploader.Foundation.Engines;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ImageUpdater.Foundation.Messages;
+using ImageUploader.Foundation.Messages;
 using System.IO;
 
-namespace ImageUpdater.Data.Engines
+namespace ImageUploader.Data.Engines
 {
     public class ImageDataEngine : IImageDataEngine
     {

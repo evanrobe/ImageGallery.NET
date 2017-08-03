@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
-using ImageUpdater.Foundation.Messages;
+using ImageUploader.Foundation.Messages;
 using ImageUploader.Business.Managers;
 using System.Collections.Generic;
 

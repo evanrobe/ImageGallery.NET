@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ImageUpdater.Foundation")]
+[assembly: AssemblyTitle("ImageUploader.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ImageUpdater.Foundation")]
+[assembly: AssemblyProduct("ImageUploader.Data")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("705c4e77-2550-4ef7-92f0-61f8fd0f1136")]
+[assembly: Guid("b128b2e2-8217-49f5-af87-afc7cf7a3075")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -57,17 +57,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImageUpdater.Data\ImageUpdater.Data.csproj">
-      <Project>{b128b2e2-8217-49f5-af87-afc7cf7a3075}</Project>
-      <Name>ImageUpdater.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ImageUpdater.Foundation\ImageUpdater.Foundation.csproj">
-      <Project>{705c4e77-2550-4ef7-92f0-61f8fd0f1136}</Project>
-      <Name>ImageUpdater.Foundation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ImageUploader.Business\ImageUploader.Business.csproj">
       <Project>{6f50b4f4-be37-489c-80b3-7ec6d9a70477}</Project>
       <Name>ImageUploader.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageUploader.Data\ImageUploader.Data.csproj">
+      <Project>{b128b2e2-8217-49f5-af87-afc7cf7a3075}</Project>
+      <Name>ImageUploader.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageUploader.Foundation\ImageUploader.Foundation.csproj">
+      <Project>{705c4e77-2550-4ef7-92f0-61f8fd0f1136}</Project>
+      <Name>ImageUploader.Foundation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

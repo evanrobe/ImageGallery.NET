@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace ImageUpdater.Foundation.Messages
+namespace ImageUploader.Foundation.Messages
 {
     public class ImageData : ImageMetaData
     {

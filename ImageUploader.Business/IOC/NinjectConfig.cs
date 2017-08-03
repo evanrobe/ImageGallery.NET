@@ -1,5 +1,5 @@
-﻿using ImageUpdater.Data.Engines;
-using ImageUpdater.Foundation.Engines;
+﻿using ImageUploader.Data.Engines;
+using ImageUploader.Foundation.Engines;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;

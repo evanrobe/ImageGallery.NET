@@ -1,4 +1,4 @@
-﻿using ImageUpdater.Foundation.Messages;
+﻿using ImageUploader.Foundation.Messages;
 using ImageUploader.Business.Managers;
 using ImageUploader.Web.Models;
 using System;

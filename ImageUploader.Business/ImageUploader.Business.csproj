@@ -49,17 +49,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImageUpdater.Data\ImageUpdater.Data.csproj">
-      <Project>{b128b2e2-8217-49f5-af87-afc7cf7a3075}</Project>
-      <Name>ImageUpdater.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ImageUpdater.Foundation\ImageUpdater.Foundation.csproj">
-      <Project>{705c4e77-2550-4ef7-92f0-61f8fd0f1136}</Project>
-      <Name>ImageUpdater.Foundation</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\ImageUploader.Data\ImageUploader.Data.csproj">
+      <Project>{b128b2e2-8217-49f5-af87-afc7cf7a3075}</Project>
+      <Name>ImageUploader.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageUploader.Foundation\ImageUploader.Foundation.csproj">
+      <Project>{705c4e77-2550-4ef7-92f0-61f8fd0f1136}</Project>
+      <Name>ImageUploader.Foundation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,15 +5,15 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUploader.Business", "ImageUploader.Business\ImageUploader.Business.csproj", "{6F50B4F4-BE37-489C-80B3-7EC6D9A70477}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUpdater.Data", "ImageUpdater.Data\ImageUpdater.Data.csproj", "{B128B2E2-8217-49F5-AF87-AFC7CF7A3075}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUpdater.Foundation", "ImageUpdater.Foundation\ImageUpdater.Foundation.csproj", "{705C4E77-2550-4EF7-92F0-61F8FD0F1136}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.ImageUploader.Business", "Tests.ImageUploader.Business\Tests.ImageUploader.Business.csproj", "{F3C9FA86-9587-4003-B5B9-88200FD009E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUploader.Web", "ImageUploader.Web\ImageUploader.Web.csproj", "{68ABB8B2-9012-40D7-8F6A-E4EF11F8D4AE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.ImageUploader.Web", "Tests.ImageUploader.Web\Tests.ImageUploader.Web.csproj", "{10D883EB-14F6-4542-8E2A-A76F872A33C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUploader.Foundation", "ImageUploader.Foundation\ImageUploader.Foundation.csproj", "{705C4E77-2550-4EF7-92F0-61F8FD0F1136}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUploader.Data", "ImageUploader.Data\ImageUploader.Data.csproj", "{B128B2E2-8217-49F5-AF87-AFC7CF7A3075}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,6 @@ Global
 		{6F50B4F4-BE37-489C-80B3-7EC6D9A70477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F50B4F4-BE37-489C-80B3-7EC6D9A70477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F50B4F4-BE37-489C-80B3-7EC6D9A70477}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B128B2E2-8217-49F5-AF87-AFC7CF7A3075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B128B2E2-8217-49F5-AF87-AFC7CF7A3075}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B128B2E2-8217-49F5-AF87-AFC7CF7A3075}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B128B2E2-8217-49F5-AF87-AFC7CF7A3075}.Release|Any CPU.Build.0 = Release|Any CPU
-		{705C4E77-2550-4EF7-92F0-61F8FD0F1136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{705C4E77-2550-4EF7-92F0-61F8FD0F1136}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{705C4E77-2550-4EF7-92F0-61F8FD0F1136}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{705C4E77-2550-4EF7-92F0-61F8FD0F1136}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3C9FA86-9587-4003-B5B9-88200FD009E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F3C9FA86-9587-4003-B5B9-88200FD009E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3C9FA86-9587-4003-B5B9-88200FD009E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +37,14 @@ Global
 		{10D883EB-14F6-4542-8E2A-A76F872A33C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10D883EB-14F6-4542-8E2A-A76F872A33C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10D883EB-14F6-4542-8E2A-A76F872A33C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{705C4E77-2550-4EF7-92F0-61F8FD0F1136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{705C4E77-2550-4EF7-92F0-61F8FD0F1136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{705C4E77-2550-4EF7-92F0-61F8FD0F1136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{705C4E77-2550-4EF7-92F0-61F8FD0F1136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B128B2E2-8217-49F5-AF87-AFC7CF7A3075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B128B2E2-8217-49F5-AF87-AFC7CF7A3075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B128B2E2-8217-49F5-AF87-AFC7CF7A3075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B128B2E2-8217-49F5-AF87-AFC7CF7A3075}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
