@@ -1,0 +1,17 @@
+﻿@model ImageUploader.Web.Models.ViewImageModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<img class="fullimage" src="~/File?fileId=@Model.FileGuid" />
+<div>
+    File name: @Model.FileName
+</div>
+<div>
+    Tags: @Model.Tags
+</div>
+<div>
+    <span class="glyphicon glyphicon-link">
+    </span>
+    <a href="~/ViewImage?fileId=@Model.FileGuid">/ViewImage?fileId=@Model.FileGuid</a>
+</div>

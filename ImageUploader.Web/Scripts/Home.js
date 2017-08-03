@@ -20,7 +20,7 @@
 function ShowFullImage(imageGuid) {
     BootstrapDialog.show({
         title: '',
-        message: '<img class="fullimage" src="/File?fileId=' + imageGuid + '"/>',
+        message: $('<div class="fullimage">Loading. Please wait...</div>').load('/ViewImage?fileId='+imageGuid),
         buttons: [{
             label: 'Close',
             action: function (dialog) {

@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="IOC\NinjectConfig.cs" />
     <Compile Include="Managers\ImageManager.cs" />
+    <Compile Include="Models\ImageInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

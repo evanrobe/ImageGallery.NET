@@ -1,5 +1,6 @@
 ﻿using ImageUpdater.Foundation.Engines;
 using ImageUpdater.Foundation.Messages;
+using ImageUploader.Business.Models;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -44,15 +45,36 @@ namespace ImageUploader.Business.Managers
 
             foreach(var tag in tags)
             {
-                //make sure the image is linked correctly.
-                tag.ImageId = i.ID;
-                _ite.Insert(tag);
+                if (!String.IsNullOrWhiteSpace(tag.TagName))
+                {
+                    //make sure the image is linked correctly.
+                    tag.ImageId = i.ID;
+                    _ite.Insert(tag);
+                }
             }
         }
 
         public IEnumerable<ImageMetaData> RetrieveAll()
         {
             return _imde.RetrieveAll();
+        }
+
+        public IEnumerable<ImageMetaData> RetrieveByPartialTagName(String tagName)
+        {
+            return _imde.RetrieveByPartialTagName(tagName);
+        }
+
+        public ImageInfo RetrieveByGuid(Guid fileGuid)
+        {
+            var info = new ImageInfo();
+            var md = _imde.RetrieveByGuid(fileGuid);
+
+            info.ImageGuid = md.ImageGUID;
+            info.ImageId = md.ID;
+            info.Tags = _ite.RetrieveByImageId(info.ImageId);
+            info.ImageName = md.FileName;
+
+            return info;
         }
 
         public ImageData GetImageData(Guid fileGuid)

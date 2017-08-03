@@ -12,12 +12,16 @@ namespace ImageUploader.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(String tagName)
         {
             var man = new ImageManager();
             var model = new HomeModel();
 
-            model.Images = man.RetrieveAll();
+            if (String.IsNullOrWhiteSpace(tagName))
+                model.Images = man.RetrieveAll();
+            else
+                model.Images = man.RetrieveByPartialTagName(tagName);
+
             return View(model);
         }
 
