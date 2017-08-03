@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ImageUploader.Foundation.Engines
 {
-    public interface IImageTagEngine
+    public interface IImageTagEngine : IDisposable
     {
         void Insert(ImageTag imageTag);
         void Delete(int Id);

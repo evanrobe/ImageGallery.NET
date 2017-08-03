@@ -103,6 +103,8 @@ namespace ImageUploader.Business.Managers
         public void Dispose()
         {
             _imde.Dispose();
+            _ide.Dispose();
+            _ite.Dispose();
         }
     }
 }
