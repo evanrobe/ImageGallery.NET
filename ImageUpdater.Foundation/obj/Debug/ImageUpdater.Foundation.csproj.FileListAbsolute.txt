@@ -1,0 +1,7 @@
+C:\Users\00082499\Documents\Projects\OnGoing\ImageUploader\ImageUploader.Web\ImageUpdater.Foundation\bin\Debug\ImageUpdater.Foundation.dll
+C:\Users\00082499\Documents\Projects\OnGoing\ImageUploader\ImageUploader.Web\ImageUpdater.Foundation\bin\Debug\ImageUpdater.Foundation.pdb
+C:\Users\00082499\Documents\Projects\OnGoing\ImageUploader\ImageUploader.Web\ImageUpdater.Foundation\bin\Debug\Ninject.dll
+C:\Users\00082499\Documents\Projects\OnGoing\ImageUploader\ImageUploader.Web\ImageUpdater.Foundation\bin\Debug\Ninject.xml
+C:\Users\00082499\Documents\Projects\OnGoing\ImageUploader\ImageUploader.Web\ImageUpdater.Foundation\obj\Debug\ImageUpdater.Foundation.dll
+C:\Users\00082499\Documents\Projects\OnGoing\ImageUploader\ImageUploader.Web\ImageUpdater.Foundation\obj\Debug\ImageUpdater.Foundation.pdb
+C:\Users\00082499\Documents\Projects\OnGoing\ImageUploader\ImageUploader.Web\ImageUpdater.Foundation\obj\Debug\ImageUpdater.Foundation.csprojResolveAssemblyReference.cache

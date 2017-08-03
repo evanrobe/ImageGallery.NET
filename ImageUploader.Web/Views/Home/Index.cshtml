@@ -1,0 +1,26 @@
+﻿@model ImageUploader.Web.Models.HomeModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Photo Gallery</h1>
+</div>
+
+<a href="~/Upload">Upload a new file</a>
+<div class="row">
+@foreach (var i in Model.Images)
+{
+    <div class="tilecontainer col-lg-2 col-md-4 col-sm-6">
+        <div class="closeItem">
+            <img class="imgtile" src="/File?fileId=@i.ImageGUID" onclick="ShowFullImage('@i.ImageGUID')"/>
+            <div class="hover-btn">
+                <button type="button" onclick="DeleteImage('@i.ImageGUID');" >
+                    <span aria-hidden="false" >×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+}
+</div>

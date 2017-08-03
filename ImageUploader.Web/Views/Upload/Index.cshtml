@@ -1,0 +1,13 @@
+﻿@model ImageUploader.Web.Models.UploadModel
+@{
+    ViewBag.Title = "Upload";
+}
+
+<form action="~/Upload" method="post" enctype="multipart/form-data">
+
+    <label for="file">Filename:</label>
+    <input type="file" name="file" id="file" />
+
+    Tags <input type="text" name="Tags" /><input type="text" name="Tags" /><input type="text" name="Tags" />
+    <input type="submit" />
+</form>
