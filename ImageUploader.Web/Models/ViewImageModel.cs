@@ -10,5 +10,6 @@ namespace ImageUploader.Web.Models
         public String FileName { get; set; }
         public String Tags { get; set; }
         public Guid FileGuid { get; set; }
+        public String Description { get; set; }
     }
 }

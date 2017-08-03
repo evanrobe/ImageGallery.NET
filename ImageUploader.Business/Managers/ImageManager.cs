@@ -73,6 +73,7 @@ namespace ImageUploader.Business.Managers
             info.ImageId = md.ID;
             info.Tags = _ite.RetrieveByImageId(info.ImageId);
             info.ImageName = md.FileName;
+            info.Description = md.Description;
 
             return info;
         }

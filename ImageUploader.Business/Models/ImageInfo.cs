@@ -12,5 +12,6 @@ namespace ImageUploader.Business.Models
         public String ImageName { get; set; }
         public int ImageId { get; set; }
         public Guid ImageGuid { get; set; }
+        public String Description { get; set; }
     }
 }

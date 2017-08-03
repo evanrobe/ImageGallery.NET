@@ -27,6 +27,7 @@ namespace ImageUploader.Web.Controllers
             model.FileGuid = ii.ImageGuid;
             model.Tags = String.Join(" , ", tagNames);
             model.FileName = ii.ImageName;
+            model.Description = ii.Description;
 
             return View(model);
         }

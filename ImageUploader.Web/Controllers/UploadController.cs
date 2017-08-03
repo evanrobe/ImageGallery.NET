@@ -30,7 +30,7 @@ namespace ImageUploader.Web.Controllers
                 var fileName = Path.GetFileName(file.FileName);
                 md.FileName = fileName;
                 md.ContentType = file.ContentType;
-
+                md.Description = model.Description;
                 foreach (var tag in model.Tags)
                 {
                     ImageTag t = new ImageTag();

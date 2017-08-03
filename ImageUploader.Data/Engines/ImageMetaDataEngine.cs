@@ -15,12 +15,13 @@ namespace ImageUploader.Data.Engines
         {
             var cs = System.Configuration.ConfigurationManager.ConnectionStrings["imageDB"].ConnectionString;
             var con = new SqlCeConnection(cs);
-            var sql = "insert into IMAGE(I_GUID , I_FILE_NAME, I_CONTENT_TYPE) values (@iGuid , @iFileName , @iContentType)";
+            var sql = "insert into IMAGE(I_DESC , I_GUID , I_FILE_NAME, I_CONTENT_TYPE) values (@iDesc , @iGuid , @iFileName , @iContentType)";
 
             con.Open();
 
             var command = new SqlCeCommand(sql, con);
 
+            command.Parameters.AddWithValue("@iDesc", i.Description == null ? "" : i.Description);
             command.Parameters.AddWithValue("@iGuid", i.ImageGUID.ToString());
             command.Parameters.AddWithValue("@iFileName", i.FileName);
             command.Parameters.AddWithValue("@iContentType", i.ContentType);
@@ -47,6 +48,7 @@ namespace ImageUploader.Data.Engines
 
             sql = @"select 
                     I_ID,
+                    I_DESC,
                     I_GUID,
                     I_FILE_NAME,
                     I_CONTENT_TYPE
@@ -62,6 +64,7 @@ namespace ImageUploader.Data.Engines
                 ImageMetaData i = new ImageMetaData();
 
                 i.ID = (int)reader["I_ID"];
+                i.Description = (String)reader["I_DESC"];
                 i.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
                 i.FileName = (String)reader["I_FILE_NAME"];
                 i.ContentType = (String)reader["I_CONTENT_TYPE"];
@@ -83,6 +86,7 @@ namespace ImageUploader.Data.Engines
             sql = @"select 
                     distinct
                     I.I_ID,
+                    I.I_DESC,
                     I.I_GUID,
                     I.I_FILE_NAME,
                     I.I_CONTENT_TYPE
@@ -106,6 +110,7 @@ namespace ImageUploader.Data.Engines
             {
                 ImageMetaData i = new ImageMetaData();
 
+                i.Description = (String)reader["I_DESC"];
                 i.ID = (int)reader["I_ID"];
                 i.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
                 i.FileName = (String)reader["I_FILE_NAME"];
@@ -127,6 +132,7 @@ namespace ImageUploader.Data.Engines
 
             sql = @"select 
                     I_ID,
+                    I_DESC,
                     I_GUID,
                     I_FILE_NAME,
                     I_CONTENT_TYPE
@@ -144,6 +150,7 @@ namespace ImageUploader.Data.Engines
             {
                 ret = new ImageMetaData();
 
+                ret.Description = (String)reader["I_DESC"];
                 ret.ID = (int)reader["I_ID"];
                 ret.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
                 ret.FileName = (String)reader["I_FILE_NAME"];
@@ -165,6 +172,7 @@ namespace ImageUploader.Data.Engines
             sql = @"select 
                     I_ID,
                     I_GUID,
+                    I_DESC,
                     I_FILE_NAME,
                     I_CONTENT_TYPE
                     FROM
@@ -181,6 +189,7 @@ namespace ImageUploader.Data.Engines
             {
                 ret = new ImageMetaData();
 
+                ret.Description = (String)reader["I_DESC"];
                 ret.ID = (int)reader["I_ID"];
                 ret.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
                 ret.FileName = (String)reader["I_FILE_NAME"];
