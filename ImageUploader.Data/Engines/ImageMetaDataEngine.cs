@@ -14,39 +14,50 @@ namespace ImageUploader.Data.Engines
         public void Insert(ImageMetaData i)
         {
             var cs = System.Configuration.ConfigurationManager.ConnectionStrings["imageDB"].ConnectionString;
-            var con = new SqlCeConnection(cs);
-            var sql = "insert into IMAGE(I_DESC , I_GUID , I_FILE_NAME, I_CONTENT_TYPE) values (@iDesc , @iGuid , @iFileName , @iContentType)";
 
-            con.Open();
-
-            var command = new SqlCeCommand(sql, con);
-
-            command.Parameters.AddWithValue("@iDesc", i.Description == null ? "" : i.Description);
-            command.Parameters.AddWithValue("@iGuid", i.ImageGUID.ToString());
-            command.Parameters.AddWithValue("@iFileName", i.FileName);
-            command.Parameters.AddWithValue("@iContentType", i.ContentType);
-            command.ExecuteNonQuery();
-
-            sql = "select @@IDENTITY as id";
-            command = new SqlCeCommand(sql, con);
-
-            var reader = command.ExecuteReader();
-
-            while(reader.Read())
+            using (var con = new SqlCeConnection(cs))
             {
-                i.ID = Decimal.ToInt32((Decimal)reader["id"]);
+                var sql = "insert into IMAGE(I_DESC , I_GUID , I_FILE_NAME, I_CONTENT_TYPE) values (@iDesc , @iGuid , @iFileName , @iContentType)";
+
+                con.Open();
+
+                using (var command = new SqlCeCommand(sql, con))
+                {
+
+                    command.Parameters.AddWithValue("@iDesc", i.Description == null ? "" : i.Description);
+                    command.Parameters.AddWithValue("@iGuid", i.ImageGUID.ToString());
+                    command.Parameters.AddWithValue("@iFileName", i.FileName);
+                    command.Parameters.AddWithValue("@iContentType", i.ContentType);
+                    command.ExecuteNonQuery();
+
+                    sql = "select @@IDENTITY as id";
+
+                    using (var command2 = new SqlCeCommand(sql, con))
+                    {
+
+                        using (var reader = command2.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                i.ID = Decimal.ToInt32((Decimal)reader["id"]);
+                            }
+                        }
+                    }
+                }
             }
         }
         public IEnumerable<ImageMetaData> RetrieveAll()
         {
             var cs = System.Configuration.ConfigurationManager.ConnectionStrings["imageDB"].ConnectionString;
-            var con = new SqlCeConnection(cs);
             var sql = "";
             var ret = new List<ImageMetaData>();
 
-            con.Open();
+            using (var con = new SqlCeConnection(cs))
+            {
+                con.Open();
 
-            sql = @"select 
+                sql = @"select 
                     I_ID,
                     I_DESC,
                     I_GUID,
@@ -55,20 +66,25 @@ namespace ImageUploader.Data.Engines
                     FROM
                     IMAGE";
 
-            var command = new SqlCeCommand(sql, con);
+                using (var command = new SqlCeCommand(sql, con))
+                {
 
-            var reader = command.ExecuteReader();
+                    using (var reader = command.ExecuteReader())
+                    {
 
-            while (reader.Read())
-            {
-                ImageMetaData i = new ImageMetaData();
+                        while (reader.Read())
+                        {
+                            ImageMetaData i = new ImageMetaData();
 
-                i.ID = (int)reader["I_ID"];
-                i.Description = (String)reader["I_DESC"];
-                i.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
-                i.FileName = (String)reader["I_FILE_NAME"];
-                i.ContentType = (String)reader["I_CONTENT_TYPE"];
-                ret.Add(i);
+                            i.ID = (int)reader["I_ID"];
+                            i.Description = (String)reader["I_DESC"];
+                            i.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
+                            i.FileName = (String)reader["I_FILE_NAME"];
+                            i.ContentType = (String)reader["I_CONTENT_TYPE"];
+                            ret.Add(i);
+                        }
+                    }
+                }
             }
 
             return ret;
@@ -77,13 +93,14 @@ namespace ImageUploader.Data.Engines
         public IEnumerable<ImageMetaData> RetrieveByPartialTagName(String tagName)
         {
             var cs = System.Configuration.ConfigurationManager.ConnectionStrings["imageDB"].ConnectionString;
-            var con = new SqlCeConnection(cs);
             var sql = "";
             var ret = new List<ImageMetaData>();
 
-            con.Open();
+            using (var con = new SqlCeConnection(cs))
+            {
+                con.Open();
 
-            sql = @"select 
+                sql = @"select 
                     distinct
                     I.I_ID,
                     I.I_DESC,
@@ -100,22 +117,27 @@ namespace ImageUploader.Data.Engines
                     IT.IT_NAME LIKE @tagName
                     ";
 
-            var command = new SqlCeCommand(sql, con);
+                using (var command = new SqlCeCommand(sql, con))
+                {
 
-            command.Parameters.AddWithValue("@tagName" , "%" + tagName + "%");
+                    command.Parameters.AddWithValue("@tagName", "%" + tagName + "%");
 
-            var reader = command.ExecuteReader();
+                    using (var reader = command.ExecuteReader())
+                    {
 
-            while (reader.Read())
-            {
-                ImageMetaData i = new ImageMetaData();
+                        while (reader.Read())
+                        {
+                            ImageMetaData i = new ImageMetaData();
 
-                i.Description = (String)reader["I_DESC"];
-                i.ID = (int)reader["I_ID"];
-                i.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
-                i.FileName = (String)reader["I_FILE_NAME"];
-                i.ContentType = (String)reader["I_CONTENT_TYPE"];
-                ret.Add(i);
+                            i.Description = (String)reader["I_DESC"];
+                            i.ID = (int)reader["I_ID"];
+                            i.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
+                            i.FileName = (String)reader["I_FILE_NAME"];
+                            i.ContentType = (String)reader["I_CONTENT_TYPE"];
+                            ret.Add(i);
+                        }
+                    }
+                }
             }
 
             return ret;
@@ -124,13 +146,14 @@ namespace ImageUploader.Data.Engines
         public ImageMetaData RetrieveByGuid(Guid imageGuid)
         {
             var cs = System.Configuration.ConfigurationManager.ConnectionStrings["imageDB"].ConnectionString;
-            var con = new SqlCeConnection(cs);
             var sql = "";
             ImageMetaData ret = null;
 
-            con.Open();
+            using (var con = new SqlCeConnection(cs))
+            {
+                con.Open();
 
-            sql = @"select 
+                sql = @"select 
                     I_ID,
                     I_DESC,
                     I_GUID,
@@ -141,20 +164,26 @@ namespace ImageUploader.Data.Engines
                     WHERE
                     I_GUID = @iGuid";
 
-            var command = new SqlCeCommand(sql, con);
+                using (var command = new SqlCeCommand(sql, con))
+                {
 
-            command.Parameters.AddWithValue("@iGuid", imageGuid.ToString());
-            var reader = command.ExecuteReader();
+                    command.Parameters.AddWithValue("@iGuid", imageGuid.ToString());
 
-            while (reader.Read())
-            {
-                ret = new ImageMetaData();
+                    using (var reader = command.ExecuteReader())
+                    {
 
-                ret.Description = (String)reader["I_DESC"];
-                ret.ID = (int)reader["I_ID"];
-                ret.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
-                ret.FileName = (String)reader["I_FILE_NAME"];
-                ret.ContentType = (String)reader["I_CONTENT_TYPE"];
+                        while (reader.Read())
+                        {
+                            ret = new ImageMetaData();
+
+                            ret.Description = (String)reader["I_DESC"];
+                            ret.ID = (int)reader["I_ID"];
+                            ret.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
+                            ret.FileName = (String)reader["I_FILE_NAME"];
+                            ret.ContentType = (String)reader["I_CONTENT_TYPE"];
+                        }
+                    }
+                }
             }
 
             return ret;
@@ -163,13 +192,14 @@ namespace ImageUploader.Data.Engines
         public ImageMetaData RetrieveById(int Id)
         {
             var cs = System.Configuration.ConfigurationManager.ConnectionStrings["imageDB"].ConnectionString;
-            var con = new SqlCeConnection(cs);
             var sql = "";
             ImageMetaData ret = null;
 
-            con.Open();
+            using (var con = new SqlCeConnection(cs))
+            {
+                con.Open();
 
-            sql = @"select 
+                sql = @"select 
                     I_ID,
                     I_GUID,
                     I_DESC,
@@ -180,20 +210,26 @@ namespace ImageUploader.Data.Engines
                     WHERE
                     I_ID = @iId";
 
-            var command = new SqlCeCommand(sql, con);
+                using (var command = new SqlCeCommand(sql, con))
+                {
 
-            command.Parameters.AddWithValue("@iId", Id);
-            var reader = command.ExecuteReader();
+                    command.Parameters.AddWithValue("@iId", Id);
 
-            while (reader.Read())
-            {
-                ret = new ImageMetaData();
+                    using (var reader = command.ExecuteReader())
+                    {
 
-                ret.Description = (String)reader["I_DESC"];
-                ret.ID = (int)reader["I_ID"];
-                ret.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
-                ret.FileName = (String)reader["I_FILE_NAME"];
-                ret.ContentType = (String)reader["I_CONTENT_TYPE"];
+                        while (reader.Read())
+                        {
+                            ret = new ImageMetaData();
+
+                            ret.Description = (String)reader["I_DESC"];
+                            ret.ID = (int)reader["I_ID"];
+                            ret.ImageGUID = Guid.Parse((String)reader["I_GUID"]);
+                            ret.FileName = (String)reader["I_FILE_NAME"];
+                            ret.ContentType = (String)reader["I_CONTENT_TYPE"];
+                        }
+                    }
+                }
             }
 
             return ret;
@@ -203,22 +239,28 @@ namespace ImageUploader.Data.Engines
         {
             throw new NotImplementedException();
         }
+
         public void Delete(int imageId)
         {
             var cs = System.Configuration.ConfigurationManager.ConnectionStrings["imageDB"].ConnectionString;
-            var con = new SqlCeConnection(cs);
-            var sql = @"DELETE
+
+            using (var con = new SqlCeConnection(cs))
+            {
+                var sql = @"DELETE
                        FROM
                        IMAGE
                        WHERE
                        I_ID = @iId";
 
-            con.Open();
+                con.Open();
 
-            var command = new SqlCeCommand(sql, con);
+                using (var command = new SqlCeCommand(sql, con))
+                {
 
-            command.Parameters.AddWithValue("@iId", imageId);
-            command.ExecuteNonQuery();
+                    command.Parameters.AddWithValue("@iId", imageId);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public void Dispose()
